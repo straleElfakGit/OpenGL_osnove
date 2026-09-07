@@ -8,12 +8,15 @@
 
 #include "DefaultWindowConfig.h"
 
+class Application;
+
 struct WindowData
 {
     std::string title;
     unsigned int width;
     unsigned int height;
     bool VSync;
+    Application* app = nullptr;
 
     WindowData(
         const std::string& title = WINDOW_DEFAULT_TITLE,
