@@ -151,7 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Core\Application.cpp" />
+    <ClCompile Include="src\Core\Application\Application.cpp" />
+    <ClCompile Include="src\Core\Application\ApplicationBase.cpp" />
     <ClCompile Include="src\Core\BasicScene.cpp" />
     <ClCompile Include="src\Core\Window\Window.cpp" />
     <ClCompile Include="src\Graphics\Buffers\VAOLayout.cpp" />
@@ -175,9 +176,17 @@
     <ClCompile Include="src\Graphics\Texture.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Vendor\glad.c" />
+    <ClCompile Include="src\Vendor\imgui\imgui.cpp" />
+    <ClCompile Include="src\Vendor\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\Vendor\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\Vendor\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\Vendor\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\Vendor\imgui\imgui_tables.cpp" />
+    <ClCompile Include="src\Vendor\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Core\Application.h" />
+    <ClInclude Include="src\Core\Application\Application.h" />
+    <ClInclude Include="src\Core\Application\ApplicationBase.h" />
     <ClInclude Include="src\Core\BasicScene.h" />
     <ClInclude Include="src\Core\Scene.h" />
     <ClInclude Include="src\Core\Timer.h" />
@@ -206,6 +215,15 @@
     <ClInclude Include="src\Graphics\shaderClass.h" />
     <ClInclude Include="src\Graphics\Texture.h" />
     <ClInclude Include="src\Graphics\Mesh\Mesh.h" />
+    <ClInclude Include="src\Vendor\imgui\imconfig.h" />
+    <ClInclude Include="src\Vendor\imgui\imgui.h" />
+    <ClInclude Include="src\Vendor\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="src\Vendor\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\Vendor\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="src\Vendor\imgui\imgui_internal.h" />
+    <ClInclude Include="src\Vendor\imgui\imstb_rectpack.h" />
+    <ClInclude Include="src\Vendor\imgui\imstb_textedit.h" />
+    <ClInclude Include="src\Vendor\imgui\imstb_truetype.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

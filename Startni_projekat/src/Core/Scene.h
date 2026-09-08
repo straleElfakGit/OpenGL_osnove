@@ -1,19 +1,21 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-class Application;
+class ApplicationBase;
 
 class Scene {
 protected:
-    Application* app;
+    ApplicationBase* app;
 
 public:
-    Scene(Application* app) : app(app) {}
+    Scene(ApplicationBase* app) : app(app) {}
 
     virtual ~Scene() = default;
     virtual void Start() = 0;
     virtual void Update(float dt) = 0;
     virtual void Render() = 0;
+
+    virtual void OnImGuiRender() { }
 
     virtual void OnScroll(double xoffset, double yoffset) {};
 };

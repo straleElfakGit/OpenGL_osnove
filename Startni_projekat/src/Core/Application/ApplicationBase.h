@@ -1,29 +1,27 @@
-#ifndef APPLICATION_H
-#define APPLICATION_H
-
-#include <memory>
+#ifndef APPLICATION_BASE_H
+#define APPLICATION_BASE_H
 
 #include "Scene.h"
 #include "Timestep.h"
 #include "Window/Window.h"
 
-class Application
+class ApplicationBase
 {
-private:
-	float lastFrameTime;
-	std::unique_ptr<Window> window;
+protected:
+    float lastFrameTime;
+    std::unique_ptr<Window> window;
     WindowData windowData;
     std::unique_ptr<Scene> activeScene;
     std::unique_ptr<Scene> nextScene;
 
-    void Loop();
-    void Initialize();
+    virtual void Loop() = 0;
+    virtual void Initialize() = 0;
 
     float CalculateDeltaTime();
 
 public:
-    Application();
-    ~Application();
+    ApplicationBase();
+    virtual ~ApplicationBase();
 
     void Run();
     void ChangeScene(std::unique_ptr<Scene> newScene);
@@ -34,4 +32,4 @@ public:
     GLFWwindow* GetGLFWWindow() { return window->GetGLFWWindow(); }
 };
 
-#endif // APPLICATION_H
+#endif // !APPLICATION_BASE_H

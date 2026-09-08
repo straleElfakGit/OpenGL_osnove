@@ -4,51 +4,30 @@ static void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 static void process_input(GLFWwindow* window);
 static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 
-Application::Application()
+Application::Application() : ApplicationBase() { }
+
+Application::~Application() 
 {
-	lastFrameTime = 0.0f;
-
-	window = Window::Create();
-
-	windowData.title = "Application";
-	windowData.width = 800;
-	windowData.height = 600;
-	windowData.VSync = true;
-
-}
-
-Application::~Application() {}
-
-void Application::Run()
-{
-	Initialize();
-	Loop();
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
 }
 
 void Application::Initialize()
 {
 	window->SetWindowSizeCallback(framebuffer_size_callback);
 	window->SetScrollCallback(scroll_callback);
+
+	InitializeImGui();
 }
 
-float Application::CalculateDeltaTime()
+void Application::InitializeImGui()
 {
-	const float curTime = static_cast<float>(glfwGetTime());
-	const Timestep dt(curTime - lastFrameTime);
-	lastFrameTime = curTime;
-	return dt;
-}
-
-void Application::ChangeScene(std::unique_ptr<Scene> newScene)
-{
-	nextScene = std::move(newScene);
-}
-
-void Application::OnEventScroll(double xoffset, double yoffset)
-{
-	if (activeScene) {
-		activeScene->OnScroll (xoffset, yoffset);
-	}
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	ImGui::StyleColorsDark();
+	ImGui_ImplGlfw_InitForOpenGL(window->GetGLFWWindow(), true);
+	ImGui_ImplOpenGL3_Init(GLSL_VERSION_STR);
 }
 
 void Application::Loop()
@@ -66,6 +45,15 @@ void Application::Loop()
 		if (activeScene) {
 			activeScene->Update(dt);
 			activeScene->Render();
+
+			ImGui_ImplOpenGL3_NewFrame();
+			ImGui_ImplGlfw_NewFrame();
+			ImGui::NewFrame();
+
+			activeScene->OnImGuiRender();
+
+			ImGui::Render();
+			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		}
 
 		window->Display();
