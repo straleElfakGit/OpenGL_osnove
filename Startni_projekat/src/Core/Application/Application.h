@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "ApplicationBase.h"
-#include "Scene.h"
+#include "Scenes/Scene.h"
 #include "Timestep.h"
 #include "Window/Window.h"
 

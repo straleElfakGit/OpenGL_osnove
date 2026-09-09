@@ -15,7 +15,12 @@ ApplicationBase::ApplicationBase()
 	window = Window::Create(this);
 }
 
-ApplicationBase::~ApplicationBase() { }
+ApplicationBase::~ApplicationBase() 
+{
+	if (menuScene != nullptr)
+		delete menuScene;
+	menuScene = nullptr;
+}
 
 void ApplicationBase::Run()
 {
@@ -31,14 +36,16 @@ float ApplicationBase::CalculateDeltaTime()
 	return dt;
 }
 
-void ApplicationBase::ChangeScene(std::unique_ptr<Scene> newScene)
-{
-	nextScene = std::move(newScene);
-}
-
 void ApplicationBase::OnEventScroll(double xoffset, double yoffset)
 {
+	Scene* activeScene = menuScene->GetActiveScene();
 	if (activeScene) {
 		activeScene->OnScroll(xoffset, yoffset);
 	}
+}
+
+void ApplicationBase::SetMenuScene(SceneMenu* menu)
+{
+	this->menuScene = menu;
+	this->menuScene->ResetActiveScene();
 }

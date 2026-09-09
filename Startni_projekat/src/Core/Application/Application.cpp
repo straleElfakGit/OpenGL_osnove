@@ -37,10 +37,7 @@ void Application::Loop()
 		GLFWwindow* rawWindow = window->GetGLFWWindow();
 		process_input(rawWindow);
 
-		if (nextScene) {
-			activeScene = std::move(nextScene);
-			activeScene->Start();
-		}
+		Scene* activeScene = menuScene->GetActiveScene();
 
 		if (activeScene) {
 			activeScene->Update(dt);
@@ -50,7 +47,23 @@ void Application::Loop()
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
 
-			activeScene->OnImGuiRender();
+			if (activeScene->HasImGui()) {
+				ImGui::Begin("Scene");
+				if (activeScene->IsReturnable() && ImGui::Button("<-"))
+				{
+					delete activeScene;
+					activeScene = nullptr;
+					menuScene->ResetActiveScene();
+				}
+				if (activeScene) {
+					if (activeScene->IsReturnable()) {
+						ImGui::SameLine();
+						ImGui::Text("Return back to Menu.");
+					}
+					activeScene->OnImGuiRender();
+				}
+				ImGui::End();
+			}
 
 			ImGui::Render();
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

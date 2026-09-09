@@ -84,7 +84,7 @@
     <ClCompile Include="src\Core\Application\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\BasicScene.cpp">
+    <ClCompile Include="src\Core\Scenes\BasicScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\Application\ApplicationBase.cpp">
@@ -109,6 +109,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Vendor\imgui\imgui_widgets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Scenes\SceneMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -194,10 +197,10 @@
     <ClInclude Include="src\Core\Application\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Scene.h">
+    <ClInclude Include="src\Core\Scenes\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\BasicScene.h">
+    <ClInclude Include="src\Core\Scenes\BasicScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\Application\ApplicationBase.h">
@@ -228,6 +231,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Vendor\imgui\imgui_impl_opengl3_loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Scenes\SceneMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

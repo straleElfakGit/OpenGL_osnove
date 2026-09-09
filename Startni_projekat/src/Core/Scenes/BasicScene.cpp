@@ -43,9 +43,7 @@ void BasicScene::OnImGuiRender()
 		ImGui::ShowDemoWindow(&show_demo_window);
 	{
 		static float f = 0.0f;
-		static int counter = 0;
-
-		ImGui::Begin("Hello, world!");                          
+		static int counter = 0;                        
 
 		ImGui::Text("This is some useful text.");               
 		ImGui::Checkbox("Demo Window", &show_demo_window);      
@@ -60,7 +58,6 @@ void BasicScene::OnImGuiRender()
 		ImGui::Text("counter = %d", counter);
 
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
-		ImGui::End();
 	}
 
 	if (show_another_window)

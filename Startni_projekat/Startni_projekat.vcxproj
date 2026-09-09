@@ -153,7 +153,8 @@
   <ItemGroup>
     <ClCompile Include="src\Core\Application\Application.cpp" />
     <ClCompile Include="src\Core\Application\ApplicationBase.cpp" />
-    <ClCompile Include="src\Core\BasicScene.cpp" />
+    <ClCompile Include="src\Core\Scenes\BasicScene.cpp" />
+    <ClCompile Include="src\Core\Scenes\SceneMenu.cpp" />
     <ClCompile Include="src\Core\Window\Window.cpp" />
     <ClCompile Include="src\Graphics\Buffers\VAOLayout.cpp" />
     <ClCompile Include="src\Graphics\Buffers\VertexBufferLayout.cpp" />
@@ -187,8 +188,9 @@
   <ItemGroup>
     <ClInclude Include="src\Core\Application\Application.h" />
     <ClInclude Include="src\Core\Application\ApplicationBase.h" />
-    <ClInclude Include="src\Core\BasicScene.h" />
-    <ClInclude Include="src\Core\Scene.h" />
+    <ClInclude Include="src\Core\Scenes\BasicScene.h" />
+    <ClInclude Include="src\Core\Scenes\Scene.h" />
+    <ClInclude Include="src\Core\Scenes\SceneMenu.h" />
     <ClInclude Include="src\Core\Timer.h" />
     <ClInclude Include="src\Core\Timestep.h" />
     <ClInclude Include="src\Core\Window\DefaultWindowConfig.h" />
