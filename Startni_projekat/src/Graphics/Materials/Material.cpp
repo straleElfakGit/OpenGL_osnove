@@ -10,5 +10,5 @@ Material::Material(float shininess) : shininess(shininess)
 
 Material::~Material()
 {
-	Delete();
+	//Delete();
 }

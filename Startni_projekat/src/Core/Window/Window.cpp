@@ -5,9 +5,9 @@
 
 unsigned char Window::windowCount = 0;
 
-std::unique_ptr<Window> Window::Create(const WindowData& data)
+std::unique_ptr<Window> Window::Create(ApplicationBase* app, const WindowData& data)
 {
-    return std::make_unique<Window>(data);
+    return std::make_unique<Window>(app, data);
 }
 
 WindowData& Window::GetUserData(GLFWwindow* w)
@@ -15,9 +15,10 @@ WindowData& Window::GetUserData(GLFWwindow* w)
     return *(WindowData*)glfwGetWindowUserPointer(w);
 }
 
-Window::Window(const WindowData& data)
+Window::Window(ApplicationBase* app, const WindowData& data)
     : data(data)
 {
+    this->data.app = app;
     InitGLFW();
     CreateWindow();
 

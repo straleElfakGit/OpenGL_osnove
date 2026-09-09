@@ -11,7 +11,7 @@ protected:
 	virtual void DeleteSpecific() override;
 
 public:
-	EBO(T* indices, GLsizeiptr size);
+	EBO(const T* indices, GLsizeiptr size);
 	EBO(std::vector<GLuint>& indices);
 	~EBO();
 
@@ -20,7 +20,7 @@ public:
 };
 
 template <typename T>
-EBO<T>::EBO(T* indices, GLsizeiptr size)
+EBO<T>::EBO(const T* indices, GLsizeiptr size)
 {
 	glGenBuffers(1, &ID);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ID);

@@ -3,13 +3,16 @@
 ApplicationBase::ApplicationBase()
 {
 	lastFrameTime = 0.0f;
-
-	window = Window::Create();
+	
+	WindowData windowData;
 
 	windowData.title = "Application";
 	windowData.width = 800;
 	windowData.height = 600;
 	windowData.VSync = true;
+	windowData.app = this;
+
+	window = Window::Create(this);
 }
 
 ApplicationBase::~ApplicationBase() { }

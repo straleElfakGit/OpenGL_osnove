@@ -14,11 +14,11 @@ void BasicScene::Start()
 void BasicScene::Update(float deltaTime)
 {
 	GLFWwindow* win = app->GetGLFWWindow();
-	WindowData& data = app->GetWindowData();
+	WindowData* data = (WindowData*)glfwGetWindowUserPointer(win);
 
 	ImGuiIO& io = ImGui::GetIO();
 	if (!io.WantCaptureMouse)
-		cameraPtr->Inputs(win, deltaTime, data.width, data.height);
+		cameraPtr->Inputs(win, deltaTime, data->width, data->height);
 }
 
 void BasicScene::Render()
@@ -30,8 +30,9 @@ void BasicScene::Render()
 	shaderPtr->Activate();
 	shaderPtr->setMatrix("model", model);
 
-	WindowData& data = app->GetWindowData();
-	cameraPtr->Matrix(fov, 0.1f, 100.0f, *shaderPtr, "camMat", data.width, data.height);
+	GLFWwindow* win = app->GetGLFWWindow();
+	WindowData* data = (WindowData*)glfwGetWindowUserPointer(win);
+	cameraPtr->Matrix(fov, 0.1f, 100.0f, *shaderPtr, "camMat", data->width, data->height);
 }
 
 void BasicScene::OnImGuiRender()

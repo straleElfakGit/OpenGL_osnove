@@ -13,7 +13,7 @@ protected:
 	virtual void DeleteSpecific() override;
 	
 public:
-	VBO(T* vertices, GLsizeiptr size);
+	VBO(const T* vertices, GLsizeiptr size);
 	VBO(std::vector<Vertex>& vertices);
 	~VBO();
 
@@ -22,7 +22,7 @@ public:
 };
 
 template <typename T>
-VBO<T>::VBO(T* vertices, GLsizeiptr size)
+VBO<T>::VBO(const T* vertices, GLsizeiptr size)
 {
 	glGenBuffers(1, &ID);
 	glBindBuffer(GL_ARRAY_BUFFER, ID);

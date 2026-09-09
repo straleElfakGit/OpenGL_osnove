@@ -42,10 +42,10 @@ private:
     static unsigned char windowCount;
 
 public:
-    static std::unique_ptr<Window> Create(const WindowData& data = WindowData());
+    static std::unique_ptr<Window> Create(ApplicationBase* app, const WindowData& data = WindowData());
     static WindowData& GetUserData(GLFWwindow* w);
 
-    Window(const WindowData& data = WindowData());
+    Window(ApplicationBase* app, const WindowData& data = WindowData());
     ~Window();
 
     operator GLFWwindow* () const { return window; }

@@ -10,7 +10,6 @@ class ApplicationBase
 protected:
     float lastFrameTime;
     std::unique_ptr<Window> window;
-    WindowData windowData;
     std::unique_ptr<Scene> activeScene;
     std::unique_ptr<Scene> nextScene;
 
@@ -28,7 +27,6 @@ public:
 
     void OnEventScroll(double xoffset, double yoffset);
 
-    WindowData& GetWindowData() { return windowData; }
     GLFWwindow* GetGLFWWindow() { return window->GetGLFWWindow(); }
 };
 
